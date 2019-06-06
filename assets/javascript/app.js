@@ -17,13 +17,14 @@ function displayButtons() {
         //JQuery method appends newButton to buttons-div
     }
 }
-displayButtons();
-//calls the function and displays buttons to DOM.
 
 
-$("button").on("click", function() {
+
+// $("button").on("click", function() {
+function displayShows() {
     //on-click listener for each button dynamically generated
     var show = $(this).attr("data-name");
+    //accesses data-name from show button and stores in a variable
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + show + "&api_key=eS238uhllDFcWLhClPvdxFKh0M0x8EHp&limit=10";
 
     $("#shows-div").empty();
@@ -37,7 +38,7 @@ $("button").on("click", function() {
         // console.log(response.data[0].rating);
         var results = response.data;
         //variable containing result from api call at the key of data
-        // console.log(results);
+        console.log(results);
         for (var i = 0; i < results.length; i++) {
         //iterates through results array returned from api
             var showDiv = $("<div class='show'>");
@@ -61,5 +62,18 @@ $("button").on("click", function() {
 
         }
     });
+};
+
+
+$("#add-show").on("click", function(event) {
+    event.preventDefault();
+    var show = $("#show-input").val().trim();
+    console.log(show);
+    topics.push(show);
+    displayButtons();
 });
 
+$(document).on("click", ".show-btn", displayShows);
+
+displayButtons();
+//calls the function and displays buttons to DOM.
