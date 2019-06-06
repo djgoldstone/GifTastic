@@ -38,7 +38,7 @@ function displayShows() {
         // console.log(response.data[0].rating);
         var results = response.data;
         //variable containing result from api call at the key of data
-        console.log(results);
+        // console.log(results);
         for (var i = 0; i < results.length; i++) {
         //iterates through results array returned from api
             var showDiv = $("<div class='show'>");
@@ -53,6 +53,13 @@ function displayShows() {
             //variable assigned to dynamically generated image tag
             showImg.attr("src",results[i].images.fixed_height.url);
             //variable containing img tag assigned attribute of img src with gif image
+            showImg.addClass("gif");
+            //adds class to images
+            showImg.attr({
+                "data-still": results[i].images.fixed_height_still.url,
+                "data-state": "still",
+                "data-animate": results[i].images.fixed_height.url
+            });
             showDiv.append(p);
             //rating appended to showDiv
             showDiv.append(showImg);
@@ -61,6 +68,19 @@ function displayShows() {
             //div containing dynamically generated elements prepended to shows-div hard-coded in HTML
 
         }
+        $(".gif").on("click", function() {
+            var state = $(this).attr("data-state");
+            console.log(state);
+            if (state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+            }
+
+            if (state === "animate") {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            }
+        });
     });
 };
 
