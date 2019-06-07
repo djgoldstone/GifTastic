@@ -2,7 +2,6 @@
     float: right;
     margin-top: 10px;
     margin-right: 5px;
-    /* position: relative ; */
 }
 #container {
     padding: 20px;
@@ -13,7 +12,6 @@
 #buttons-div {
     margin-top: 10px;
     margin-bottom: 20px;
-    /* text-align: center; */
 }
 body {
     background-image: url(https://i.imgur.com/jwhS7om.gif);
@@ -36,5 +34,4 @@ p {
     font-family: 'XoloniumRegular'; 
     font-weight: bold; 
     font-style: normal; 
-    /* font-family: "UniqueRegular"; */
 }

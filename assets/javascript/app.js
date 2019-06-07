@@ -22,7 +22,6 @@ function displayButtons() {
 }
 
 
-// $("button").on("click", function() {
 function displayShows() {
     //on-click listener for each button dynamically generated
     var show = $(this).attr("data-name");
@@ -36,11 +35,8 @@ function displayShows() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        // console.log(response);
-        // console.log(response.data[0].rating);
         var results = response.data;
         //variable containing result from api call at the key of data
-        // console.log(results);
         for (var i = 0; i < results.length; i++) {
         //iterates through results array returned from api
             var showDiv = $("<div class='show'>");
@@ -63,11 +59,7 @@ function displayShows() {
                     "style": "margin: 5px",
                 })
             }
-            //variable assigned to rating key value from each element at index of i
-            // console.log(rating);
-            
-            // var p = $("<p>").text("Rating: " + rating);
-            //variable assigned to dynamically generated paragraph tag containing the rating 
+             
             showDiv.empty();
             var showImg = $("<img>");
             //variable assigned to dynamically generated image tag
@@ -82,7 +74,6 @@ function displayShows() {
                 "style": "margin: 10px",
             });
             showDiv.append(ratingImg);
-            // showDiv.append(p);
             //rating appended to showDiv
             showDiv.append(showImg);
             //gif from giphy api rendered to DOM on showDiv
@@ -92,7 +83,6 @@ function displayShows() {
         }
         $(".gif").on("click", function() {
             var state = $(this).attr("data-state");
-            console.log(state);
             if (state === "still") {
                 $(this).attr("src", $(this).attr("data-animate"));
                 $(this).attr("data-state", "animate");
@@ -110,12 +100,13 @@ function displayShows() {
 $("#add-show").on("click", function(event) {
     event.preventDefault();
     var show = $("#show-input").val().trim();
-    console.log(show);
     topics.push(show);
     displayButtons();
 });
+//on click listener that takes show input and requests gifs from the api and pushes to the show array, then calls displayButtons
 
 $(document).on("click", ".show-btn", displayShows);
+//any click on the show button div class will call display shows
 
 displayButtons();
 //calls the function and displays buttons to DOM.
