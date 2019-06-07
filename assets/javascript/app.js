@@ -23,7 +23,6 @@ function displayButtons() {
 
 
 function displayShows() {
-    //on-click listener for each button dynamically generated
     var show = $(this).attr("data-name");
     //accesses data-name from show button and stores in a variable
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + show + "&api_key=eS238uhllDFcWLhClPvdxFKh0M0x8EHp&limit=10";
