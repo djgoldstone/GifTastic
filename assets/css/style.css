@@ -1,3 +1,40 @@
 #search-form-div {
     float: right;
+    margin-top: 10px;
+    margin-right: 5px;
+    /* position: relative ; */
+}
+#container {
+    padding: 20px;
+    font-family: 'XoloniumRegular'; 
+    font-weight: normal; 
+    font-style: normal; 
+}
+#buttons-div {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /* text-align: center; */
+}
+body {
+    background-image: url(https://i.imgur.com/jwhS7om.gif);
+    background-size: 100%;
+}
+p {
+    color: white;
+}
+.nav-item {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'XoloniumRegular'; 
+    font-weight: normal; 
+    font-style: normal; 
+
+}
+.navbar-brand {
+    color: white;
+    font-family: 'XoloniumRegular'; 
+    font-weight: bold; 
+    font-style: normal; 
+    /* font-family: "UniqueRegular"; */
 }

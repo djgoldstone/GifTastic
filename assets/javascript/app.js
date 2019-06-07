@@ -9,7 +9,10 @@ function displayButtons() {
         //variable containing new button
         newButton.addClass("show-btn");
         //adds class of show-btn using JQuery method
-        newButton.attr("data-name", topics[i]);
+        newButton.attr({
+            "data-name": topics[i],
+            "style": "margin: 2px",
+        });
         //adds an attribute 
         newButton.text(topics[i]);
         //text displayed within button
@@ -17,7 +20,6 @@ function displayButtons() {
         //JQuery method appends newButton to buttons-div
     }
 }
-
 
 
 // $("button").on("click", function() {
@@ -44,9 +46,27 @@ function displayShows() {
             var showDiv = $("<div class='show'>");
             //variable containing dynamically generated div with class of show
             var rating = results[i].rating;
+            var ratingImg = $("<img>");
+            if (rating === "g") {
+                ratingImg.attr({
+                    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/TV-G_icon.svg/50px-TV-G_icon.svg.png",
+                    "style": "margin: 5px",
+                })
+            } else if (rating === "pg") {
+                ratingImg.attr({
+                    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/TV-PG_icon.svg/50px-TV-PG_icon.svg.png",
+                    "style": "margin: 5px",
+                })
+            } else {
+                ratingImg.attr({
+                    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/TV-14_icon.svg/50px-TV-14_icon.svg.png",
+                    "style": "margin: 5px",
+                })
+            }
             //variable assigned to rating key value from each element at index of i
             // console.log(rating);
-            var p = $("<p>").text("Rating: " + rating);
+            
+            // var p = $("<p>").text("Rating: " + rating);
             //variable assigned to dynamically generated paragraph tag containing the rating 
             showDiv.empty();
             var showImg = $("<img>");
@@ -57,10 +77,12 @@ function displayShows() {
             //adds class to images
             showImg.attr({
                 "data-still": results[i].images.fixed_height_still.url,
-                "data-state": "still",
-                "data-animate": results[i].images.fixed_height.url
+                "data-state": "animate",
+                "data-animate": results[i].images.fixed_height.url,
+                "style": "margin: 10px",
             });
-            showDiv.append(p);
+            showDiv.append(ratingImg);
+            // showDiv.append(p);
             //rating appended to showDiv
             showDiv.append(showImg);
             //gif from giphy api rendered to DOM on showDiv
