@@ -100,7 +100,10 @@ function displayShows() {
 $("#add-show").on("click", function(event) {
     event.preventDefault();
     var show = $("#show-input").val().trim();
-    topics.push(show);
+    if (!topics.includes(show)) {
+        topics.push(show);
+    }
+    $("#show-input").val("");
     displayButtons();
 });
 //on click listener that takes show input and requests gifs from the api and pushes to the show array, then calls displayButtons
